@@ -1,0 +1,9 @@
+<div class="sidebar">
+<h3 style="text-align:right;" onclick="Element.toggle('files');">
+  + files</h3>
+<div id="files" style="display:none; width:180px;white-space:nowrap;">
+<% @data_files.each do |data_file| -%>
+<div><%=h data_file.url %></div>
+<% end -%>
+</div>
+</div>

@@ -1,0 +1,11 @@
+administrator:
+  name: Admin
+  email: admin@localhost
+  state: active
+  administrator: true
+
+generic:
+  name: Generic
+  email: generic@localhost
+  state: active
+  administrator: false

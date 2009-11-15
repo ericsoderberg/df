@@ -1,0 +1,16 @@
+<h1>New donation for <%= link_to @project.name, @project %></h1>
+
+<% form_for(@donation) do |f| %>
+  <%= f.error_messages %>
+  <%= f.hidden_field :user_id %>
+  <%= f.hidden_field :project_id %>
+  
+  <p>
+    <%= f.label :amount %><br />
+    <%= f.text_field :amount, :size => 10 %>
+  </p>
+  
+  <p>
+    <%= f.submit "Pay" %> | <%= link_to 'Cancel', @project %>
+  </p>
+<% end %>

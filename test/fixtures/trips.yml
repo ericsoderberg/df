@@ -1,0 +1,15 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+conference2009:
+  name: Conference 2009
+  ministry: mexico
+  description: MyText
+  start_at: 2009-02-18
+  stop_at: 2009-02-18
+
+teaching2009:
+  name: Teaching 2009
+  ministry: peru
+  description: MyText
+  start_at: 2009-02-18
+  stop_at: 2009-02-18

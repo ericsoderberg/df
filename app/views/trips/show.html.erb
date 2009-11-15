@@ -1,0 +1,14 @@
+<h1><%=h @trip.name %> with <%= link_to @ministry.name, @ministry %></h1>
+
+<div class="dates">
+  <%=h friendly_date @trip.start_at %> -
+  <%=h friendly_date @trip.stop_at %>
+</div>
+
+<%= markdown @trip.description %>
+
+<% if admin? -%>
+<%= link_to 'Edit', edit_trip_path(@trip), :class => 'admin' %> |
+<%= link_to 'Delete', @trip, :confirm => 'Are you sure?',
+  :method => :delete, :class => 'admin' %>
+<% end -%>

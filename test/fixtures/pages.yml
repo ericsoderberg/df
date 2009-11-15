@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Page1
+  contents: MyText
+  parameterized_name: Page1
+
+two:
+  name: Page2
+  contents: MyText
+  parameterized_name: Page2

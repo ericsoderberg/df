@@ -1,0 +1,23 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Project1
+  description: MyText
+  cost: 1.5
+  raised: 1.5
+  code: ONE
+  finished: false
+  ministry: mexico
+  start_at: 2009-01-01
+  stop_at: 2009-01-21
+
+two:
+  name: Project2
+  description: MyText
+  cost: 1.5
+  raised: 1.5
+  code: TWO
+  finished: false
+  ministry: mexico
+  start_at: 2009-02-01
+  stop_at: 2009-02-21

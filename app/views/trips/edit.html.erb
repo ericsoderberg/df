@@ -1,0 +1,13 @@
+<h1>Editing <%=h @trip.name %>
+  for <%= link_to @ministry.name, @ministry %></h1>
+
+<% form_for(@trip) do |f| %>
+  <%= f.error_messages %>
+
+  <%= render :partial => 'form', :locals => {:f => f} %>
+  
+  <p>
+    <%= f.submit "Update" %> |
+    <%= link_to 'Cancel', @trip, :class => 'admin' %>
+  </p>
+<% end %>

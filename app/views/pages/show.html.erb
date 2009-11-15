@@ -1,0 +1,5 @@
+<%= markdown @page.contents %>
+
+<% if admin? -%>
+<%= link_to 'Edit', edit_page_path(@page), :class => 'admin' %>
+<% end -%>

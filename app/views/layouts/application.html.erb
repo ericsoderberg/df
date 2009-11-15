@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+       "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title><%= @title || 'DF' %></title>
+  <%= stylesheet_link_tag 'main' %>
+  <%= javascript_include_tag :defaults %>
+  <%= calendar_date_select_includes nil %>
+</head>
+<body>
+
+<div id="main">
+	
+<div id="header">
+	<ul class="banner">
+	  <li class="title" onmouseover="hide_drop_menus()">
+	    <a href="/">Discovery Foundation</a></li>
+	  <li class="<%= @tab == 'about' ? 'selected' : '' %>"
+	    onmouseover="hide_drop_menus()">
+	    <a href="/about">About</a></li>
+	  <li class="<%= @tab == 'ministries' ? 'selected' : '' %>"
+  	  onmouseover="hide_drop_menus(); Element.show('ministries_menu')">
+  	  <%= link_to "Relationships", ministries_path %>
+  	  <ul id="ministries_menu" class="drop_menu" style="display:none"
+  	    onmouseout="Element.hide('ministries_menu')">
+  	    <% for ministry in @ministries -%>
+  	      <li><%= link_to ministry.name, ministry %></li>
+  	    <% end -%>
+  	  </ul>
+  	</li>
+	  <li class="<%= @tab == 'news' ? 'selected' : '' %>"
+	    onmouseover="hide_drop_menus()"><a href="news">News</a></li>
+	  <li id="user_bar" onmouseover="hide_drop_menus()">
+	    <%= render :partial => 'users/user_bar' %></li>
+	</ul>
+	<!--p class="subheader">Going where many wont</p-->
+</div>
+
+<div id="content" onmouseover="Element.hide('ministries_menu')">	
+<p class="flash"><%= flash[:notice] %></p>
+
+<%= yield  %>
+
+</div>
+
+<div id="footer">
+</div>
+
+</div>
+
+</body>
+</html>

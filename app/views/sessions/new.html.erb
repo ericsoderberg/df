@@ -1,0 +1,25 @@
+<div class="account">
+<div class="content">
+<h1>Log In</h1>
+
+<% form_tag session_path do -%>
+
+<% if @last_try_failed -%>
+<div id="errorExplanation">
+  <p>Invalid email or password</p>
+</div>
+<% end -%>
+
+<p><%= label_tag 'email' %><br />
+<%= text_field_tag 'email', @email, :size => 30 %></p>
+
+<p><%= label_tag 'password' %><br/>
+<%= password_field_tag 'password', nil, :size => 30 %></p>
+
+<p><%= label_tag 'remember_me', 'Remember me' %>
+<%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+<p><%= submit_tag 'Log in' %></p>
+<% end -%>
+</div>
+</div>

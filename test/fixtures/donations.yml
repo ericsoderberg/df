@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user: generic
+  project: one 
+  amount: 1.5
+  received: false
+
+two:
+  user: generic
+  project: two 
+  amount: 1.5
+  received: false

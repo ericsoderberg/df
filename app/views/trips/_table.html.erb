@@ -1,0 +1,11 @@
+<% unless trips.empty? -%>
+<table>
+<tr><th>Date</th><th>Name</th></tr>
+<% for trip in trips -%>
+<tr>
+  <td><%=h trip.start_at.strftime("%B %Y") %></td>
+  <td><%= link_to trip.name, trip %></td>
+</tr>
+<% end -%>
+</table>
+<% end -%>

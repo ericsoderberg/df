@@ -1,0 +1,16 @@
+<h1>Ministries</h1>
+
+<ul class="listing">
+<% for ministry in @ministries %>
+  <li>
+    <h2><%= link_to h(ministry.name), ministry %></h2>
+    <p><%=h ministry.description %></p>
+  </li>
+<% end %>
+</ul>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'New ministry', new_ministry_path, :class => 'admin' %>
+</div>
+<% end -%>

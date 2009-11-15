@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  ministry_id: 1
+  location_id: 1
+
+two:
+  ministry_id: 1
+  location_id: 1

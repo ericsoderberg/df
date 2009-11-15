@@ -1,0 +1,16 @@
+<h1><%=h @user.name %></h1>
+
+<p><%= h @user.email %></p>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'Edit', edit_user_path(@user), :class => 'admin' %> |
+<%= link_to 'Delete', @user, :confirm => 'Are you sure?',
+  :method => :delete, :class => 'admin' %>
+</div>
+<% end -%>
+
+<h2>Donations</h2>
+
+<%= render :partial => 'donations/table',
+  :locals => {:donations => @user.donations} %>

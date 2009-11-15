@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+mexico:
+  name: Mexico
+  url: MyString
+  description: MyText
+  code: M
+
+peru:
+  name: Peru
+  url: MyString
+  description: MyText
+  code: P

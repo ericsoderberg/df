@@ -1,0 +1,9 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: File1
+  user: administrator
+
+two:
+  name: File2
+  user: administrator

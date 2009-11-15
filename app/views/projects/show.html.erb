@@ -1,0 +1,41 @@
+<h1><%=h @project.name %> for <%= link_to @ministry.name, @ministry %></h1>
+
+<% if @project.start_at -%>
+<div class="dates">
+  <%=h friendly_date @project.start_at %> -
+  <%=h friendly_date @project.stop_at %>
+</div>
+<% end -%>
+
+<p>
+<%= markdown @project.description %>
+</p>
+
+<p>
+  <b>Cost:</b> <%=h number_to_currency @project.cost %>
+  <b>Raised:</b> <%=h number_to_currency @project.raised %>
+</p>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Delete', @project, :confirm => 'Are you sure?', :method => :delete %>
+</div>
+<% end -%>
+
+<% if self.current_user -%>
+  <% if @my_donations.empty? -%>
+    <%= button_to 'Donate', new_donation_path(:project => @project) %>
+  <% else -%>
+    <h3>My donations for this project</h3>
+    <%= render :partial => 'donations/table',
+      :locals => {:donations => @my_donations} %>
+    <%= button_to 'Donate Again', new_donation_path(:project => @project) %>
+  <% end -%>
+<% end -%>
+
+<% if admin? -%>
+<h3>Donations</h3>
+<%= render :partial => 'donations/table',
+  :locals => {:donations => @project.donations} %>
+<% end -%>

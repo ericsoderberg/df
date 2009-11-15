@@ -1,0 +1,11 @@
+<table>
+<tr><th>Date</th><th>Project</th><th>Amount</th><th>Received?</th></tr>
+<% for donation in donations -%>
+<tr>
+  <td><%=h donation.created_at.strftime("%B %b, %Y") %></td>
+  <td><%= link_to donation.project.name, donation.project %></td>
+  <td><%=h number_to_currency(donation.amount) %></td>
+  <td><%= donation.received? ? 'yes' : 'no' %></td>
+</tr>
+<% end -%>
+</table>

@@ -1,0 +1,9 @@
+<h1>News</h1>
+
+<h2>Upcoming</h2>
+
+<%= render :partial => 'trips/table', :locals => {:trips => @upcoming} %>
+
+<h2>Recent</h2>
+
+<%= render :partial => 'trips/table', :locals => {:trips => @recent} %>

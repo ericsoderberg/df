@@ -1,0 +1,35 @@
+  <%= f.hidden_field :ministry_id %>
+  <p>
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </p>
+  <%= render :partial => '/data_files/list' %>
+  <p>
+    <%= f.label :description %><%= markdown_help %><br />
+    <%= f.text_area :description, :size => "80x10" %>
+  </p>
+  <p>
+    <%= f.label :cost %><br />
+    <%= f.text_field :cost, :size => 10 %>
+  </p>
+  <p>
+    <%= f.label :raised %><br />
+    <%= f.text_field :raised, :size => 10 %>
+  </p>
+  <p>
+    <%= f.label :code %><br />
+    <%= f.text_field :code, :size => 4 %>
+  </p>
+  <p>
+    <%= f.label :finished %>?<br />
+    <%= f.check_box :finished %>
+  </p>
+  <p>
+    <%= f.label :start_at %><br />
+    <%= f.calendar_date_select :start_at %>
+  </p>
+  <p>
+    <%= f.label :stop_at %><br />
+    <%= f.calendar_date_select :stop_at %>
+  </p>
+

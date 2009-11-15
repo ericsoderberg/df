@@ -1,0 +1,12 @@
+<% unless projects.empty? -%>
+<table>
+<tr><th>Date</th><th>Name</th><th>Cost</th></tr>
+<% for project in projects -%>
+<tr>
+  <td><%=h project.start_at.strftime("%B %b, %Y") %></td>
+  <td><%= link_to project.name, project %></td>
+  <td><%=h number_to_currency project.cost %></td>
+</tr>
+<% end -%>
+</table>
+<% end -%>

@@ -1,0 +1,38 @@
+<h1>Participants</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Email</th>
+    <% if admin? -%>
+    <th>Administrator?</th>
+    <% end -%>
+  </tr>
+<% for user in @users %>
+  <tr>
+    <td>
+      <% if admin? -%>
+        <%= link_to user.name, user %>
+      <% else -%>
+        <%=h user.name %>
+      <% end -%>
+    </td>
+    <td><%= mail_to user.email %></td>
+    <% if admin? -%>
+    <td>
+      <% remote_form_for(:user, user, :url => toggle_user_path(user), :update => 'result', :html => {:method => :put}) do |f| -%>
+      <%= f.check_box :administrator, :onchange => "this.form.submit();" %>
+      <% end -%>
+    </td>
+    <% end -%>
+  </tr>
+<% end %>
+</table>
+
+<div id="result"></div>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'Add someone', new_user_path, :class => 'admin' %>
+</div>
+<% end -%>

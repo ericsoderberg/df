@@ -1,0 +1,23 @@
+<p>
+  <b>User:</b>
+  <%=h @donation.user_id %>
+</p>
+
+<p>
+  <b>Project:</b>
+  <%=h @donation.project_id %>
+</p>
+
+<p>
+  <b>Amount:</b>
+  <%=h @donation.amount %>
+</p>
+
+<p>
+  <b>Received:</b>
+  <%=h @donation.received %>
+</p>
+
+
+<%= link_to 'Edit', edit_donation_path(@donation) %> |
+<%= link_to 'Back', donations_path %>

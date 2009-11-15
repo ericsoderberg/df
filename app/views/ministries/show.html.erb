@@ -1,0 +1,47 @@
+<div class="sidebar">
+<%= render :partial => 'locations/map', :locals => {:locations => @ministry.locations, :scale => 0.5} %>
+</div>
+
+<h1><%=h @ministry.name %></h1>
+
+<%=markdown @ministry.description %>
+
+<% if @ministry.url and not @ministry.url.empty? -%>
+<p><%= link_to 'official web site', @ministry.url %></p>
+<% end -%>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'Edit', edit_ministry_path(@ministry), :class => 'admin' %> |
+<%= link_to 'Delete', @ministry, :confirm => 'Are you sure?',
+  :method => :delete, :class => 'admin' %>
+</div>
+<% end -%>
+
+<% unless @ministry.projects.empty? -%>
+<h2>Projects</h2>
+
+<%= render :partial => 'projects/table',
+  :locals => {:projects => @ministry.projects} %>
+<% end -%>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'New project', new_project_path(:ministry => @ministry),
+  :class => 'admin' %>
+</div>
+<% end -%>
+
+<% unless @ministry.trips.empty? -%>
+<h2>Trips</h2>
+
+<%= render :partial => 'trips/table',
+  :locals => {:trips => @ministry.trips} %>
+<% end -%>
+
+<% if admin? -%>
+<div class="admin">
+<%= link_to 'New trip', new_trip_path(:ministry => @ministry),
+  :class => 'admin' %>
+</div>
+<% end -%>

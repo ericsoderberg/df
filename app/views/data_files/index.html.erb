@@ -1,0 +1,26 @@
+<h1>Files</h1>
+
+<div class="embedded_form">
+<% form_tag(data_files_path, :multipart => true) do %>
+  <label>Upload a new file: </label>
+  <%= file_field 'upload', 'datafile' %>
+  <%= submit_tag 'Upload' %>
+<% end %>
+</div>
+
+<table>
+<% @data_files.each do |data_file| %>
+  <tr>
+    <td><%=h data_file.name %></td>
+    <td><%=h data_file.url %></td>
+    <td><%= link_to data_file.user.name, user_path(data_file.user) %></td>
+    <td>
+      <% if admin? or data_file.user == current_user -%>
+        <%= link_to 'delete', data_file, :confirm => 'Are you sure?',
+          :method => :delete, :class => 'admin' %>
+      <% end -%>
+    </td>
+  </tr>
+<% end %>
+</table>
+

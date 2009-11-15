@@ -1,0 +1,45 @@
+<% if false -%>
+<ul id="home">
+	<% for page in @pages -%>
+	<li class="tab" onmouseover="hide_drop_menus()">
+		<h2><%= link_to page.name,
+		  page_alias_path(:name => page.name.parameterize) %></h2>
+	</li>
+	<% end -%>
+	<li class="tab"
+	  onmouseover="hide_drop_menus(); Element.show('ministries_menu')">
+	  <h2><%= link_to "In the field", ministries_path %></h2>
+	  <ul id="ministries_menu" class="drop_menu" style="display:none"
+	    onmouseout="Element.hide('ministries_menu')">
+	    <% for ministry in @ministries -%>
+	      <li><%= link_to ministry.name, ministry %></li>
+	    <% end -%>
+	  </ul>
+	</li>
+	<li class="tab"
+	  onmouseover="hide_drop_menus(); Element.show('news_menu')">
+	  <h2><%= link_to "News", news_path %></h2>
+	  <ul id="news_menu" class="drop_menu" style="display:none"
+	    onmouseout="Element.hide('news_menu')">
+	    <% for trip in @news_trips -%>
+	      <li>
+	        <%= link_to trip.start_at.strftime("%b %e ") + trip.name,
+	        trip %></li>
+	    <% end -%>
+	  </ul>
+	</li>
+</ul>
+<% end -%>
+
+<%= render :partial => 'locations/map', :locals => {:locations => @locations} %>
+
+<div class="admin">
+<% if admin? %>
+  <%= link_to 'donations', donations_path, :class => 'admin' -%> |
+  <%= link_to 'pages', pages_path, :class => 'admin' -%> |
+<% end -%>
+<% if self.current_user -%>
+<%= link_to "participants", users_path, :class => 'admin' %> |
+<%= link_to "files", data_files_path, :class => 'admin' %>
+<% end -%>
+</div>
