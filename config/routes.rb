@@ -2,15 +2,18 @@ ActionController::Routing::Routes.draw do |map|
   
   PRIVATE_PROTOCOL = (ENV["RAILS_ENV"] =~ /development/ ? "https" : "https")
 
-  map.resources :ministries
-  map.resources :projects
-  map.resources :trips
-  map.resources :donations
-  map.resources :pages
-  map.resources :data_files, :as => 'files'
+  map.resources :ministries, :requirements => {:protocol => 'http'}
+  map.resources :projects, :requirements => {:protocol => 'http'}
+  map.resources :trips, :requirements => {:protocol => 'http'}
+  map.resources :donations, :requirements => {:protocol => 'http'}
+  map.resources :pages, :requirements => {:protocol => 'http'}
+  map.resources :data_files, :as => 'files',
+    :requirements => {:protocol => 'http'}
 
-  map.news '/news', :controller => 'news', :actions => 'index'
-  map.logout '/logout', :controller => 'sessions', :action => 'destroy'
+  map.news '/news', :controller => 'news', :actions => 'index',
+    :protocol => 'http'
+  map.logout '/logout', :controller => 'sessions', :action => 'destroy'  ,
+    :protocol => 'http'
   map.login '/login', :controller => 'sessions', :action => 'new',
     :protocol => PRIVATE_PROTOCOL
   map.register '/register', :controller => 'users', :action => 'create',
@@ -21,17 +24,21 @@ ActionController::Routing::Routes.draw do |map|
     :action => 'activate', :protocol => PRIVATE_PROTOCOL
   map.resources :users,
     :member => { :suspend => :put, :unsuspend => :put, :purge => :delete,
-      :toggle => :put }
+      :toggle => :put },
+    :requirements => {:protocol => 'http'}
     
   map.resource :session, :requirements => {:protocol => 'https'}
-  map.resources :ministry do |ministry|
+  map.resources :ministry,
+    :requirements => {:protocol => 'http'} do |ministry|
     ministry.resources :locations, :controller => 'location_ministries'
   end
 
-  map.root :controller => "home"
+  map.root :controller => 'home', :requirements => {:protocol => 'http'}
+  map.about '/about', :controller => 'pages', :action => 'show',
+    :name => 'about', :protocol => 'http'
   
   map.page_alias '/:name', :controller => 'pages',
-    :action => 'show'
+    :action => 'show', :protocol => 'http'
 
   # The priority is based upon order of creation: first created -> highest priority.
 

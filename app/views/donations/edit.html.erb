@@ -4,25 +4,16 @@
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :user_id %><br />
-    <%= f.text_field :user_id %>
-  </p>
-  <p>
-    <%= f.label :project_id %><br />
-    <%= f.text_field :project_id %>
-  </p>
-  <p>
     <%= f.label :amount %><br />
     <%= f.text_field :amount %>
   </p>
   <p>
-    <%= f.label :received %><br />
+    <%= f.label :received %>?<br />
     <%= f.check_box :received %>
   </p>
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "Update" %> |
+    <%= link_to 'Cancel', project_path(@donation.project),
+      :class => 'admin' %>
   </p>
 <% end %>
-
-<%= link_to 'Show', @donation %> |
-<%= link_to 'Back', donations_path %>

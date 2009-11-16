@@ -6,6 +6,13 @@
   <td><%= link_to donation.project.name, donation.project %></td>
   <td><%=h number_to_currency(donation.amount) %></td>
   <td><%= donation.received? ? 'yes' : 'no' %></td>
+  <% if admin? or donation.user == self.current_user -%>
+  <td><%= link_to 'Edit', edit_donation_path(donation),
+    :class => 'admin' %></td>
+  <% end -%>
 </tr>
 <% end -%>
 </table>
+<% if donations.empty? -%>
+<p>There are no donations yet.</p>
+<% end -%>

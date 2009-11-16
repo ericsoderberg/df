@@ -8,28 +8,25 @@
     <%= f.label :description %><%= markdown_help %><br />
     <%= f.text_area :description, :size => "80x10" %>
   </p>
-  <p>
-    <%= f.label :cost %><br />
-    <%= f.text_field :cost, :size => 10 %>
-  </p>
-  <p>
-    <%= f.label :raised %><br />
-    <%= f.text_field :raised, :size => 10 %>
-  </p>
-  <p>
-    <%= f.label :code %><br />
-    <%= f.text_field :code, :size => 4 %>
-  </p>
-  <p>
-    <%= f.label :finished %>?<br />
-    <%= f.check_box :finished %>
-  </p>
-  <p>
-    <%= f.label :start_at %><br />
-    <%= f.calendar_date_select :start_at %>
-  </p>
-  <p>
-    <%= f.label :stop_at %><br />
-    <%= f.calendar_date_select :stop_at %>
-  </p>
-
+  <table>
+    <tr>
+      <td><%= f.label :cost %></td>
+      <td><%= f.label :raised %></td>
+      <td><%= f.label :code %></td>
+      <td><%= f.label :finished %>?</td>
+    </tr>
+    <tr>
+      <td><%= f.text_field :cost, :size => 10 %></td>
+      <td><%= f.text_field :raised, :size => 10 %></td>
+      <td><%= f.text_field :code, :size => 4 %></td>
+      <td><%= f.check_box :finished %></td>
+    </tr>
+  </table>
+  
+  <table>
+    <tr><td><%= f.label :start_at %></td>
+      <td><%= f.label :stop_at %></td></tr>
+    <tr><td>
+      <%= f.calendar_date_select :start_at %></td>
+      <td><%= f.calendar_date_select :stop_at %></td></tr>
+  </table>

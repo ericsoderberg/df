@@ -2,10 +2,12 @@
 
 <% form_for(@project) do |f| %>
   <%= f.error_messages %>
+  <%= hidden_field_tag 'ministry', @ministry.id %>
 
   <%= render :partial => 'form', :locals => {:f => f} %>
 
   <p>
-    <%= f.submit "Create" %> | <%= link_to 'Cancel', @ministry %>
+    <%= f.submit "Create" %> |
+    <%= link_to 'Cancel', @ministry, :class => 'admin' %>
   </p>
 <% end %>

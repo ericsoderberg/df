@@ -1,23 +1,39 @@
 class UsersController < ApplicationController
-  before_filter :login_required, :only => [:index, :show]
-  before_filter :administrator_required, :only => [:toggle]
+  before_filter :find_user,
+    :only => [:show, :edit, :update, :toggle,
+      :suspend, :unsuspend, :destroy, :purge]
+  before_filter :admin_or_self, :only => [:show, :edit, :update]
+  before_filter :administrator_required,
+    :only => [:index, :toggle,
+      :suspend, :unsuspend, :destroy, :purge]
   
   def index
     @users = User.find(:all, :order => 'name')
   end
   
   def show
-    @user = User.find(params[:id])
-    if @user != self.current_user or not admin?
-      redirect_to login_path
-      return
+  end
+  
+  def edit
+  end
+  
+  def update
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        #flash[:notice] = 'Trip was successfully updated.'
+        format.html { redirect_to(@user) }
+        format.xml  { head :ok }
+      else
+        p @user.errors.full_messages
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors,
+          :status => :unprocessable_entity }
+      end
     end
   end
   
   def toggle
-    @user = User.find(params[:id])
     attrs = {:administrator => params[:user][:administrator]}
-    p attrs
     respond_to do |format|
       if @user.update_attributes(attrs)
         #flash[:notice] = 'User was successfully updated.'
@@ -34,11 +50,6 @@ class UsersController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   include AuthenticatedSystem
   
-  # Protect these actions behind an admin login
-  # before_filter :admin_required, :only => [:suspend, :unsuspend, 
-  #   destroy, :purge]
-  before_filter :find_user, :only => [:suspend, :unsuspend, :destroy, :purge]
-
   # render new.rhtml
   def new
     @user = User.new
@@ -54,6 +65,7 @@ class UsersController < ApplicationController
       flash[:notice] = "Thanks for signing up!  We're sending you an " +
         "email with your activation code."
     else
+      p @user.errors.full_messages
       flash[:error]  = "We couldn't set up that account, sorry.  Please " +
         "try again, or contact an admin (link is above)."
       render :action => 'new'
@@ -112,4 +124,13 @@ protected
   def find_user
     @user = User.find(params[:id])
   end
+  
+  def admin_or_self
+    if @user != self.current_user and not admin?
+      redirect_to login_url
+      return false
+    end
+    true
+  end
+  
 end

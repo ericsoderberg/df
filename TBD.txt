@@ -1,27 +1,15 @@
 short term:
 
--upgrade to latest rails
--redesign interface to be more hip
--functional tests [need internet for help with latest rails]
--fix administrator_required [??]
+Capistrano
+random home map star tooltips [javascript timer?]
+contact information [hosting email?]
+random photo overlays on home page in pacific ocean
+round edges of map
+test with IE
 invite/add/approve people [test with internet]
--photos [use flash slideshow, embed from smugmug/flickr]
--login redirects to prior context [need internet for help]
--trip blog/report [markdown on page itself]
--generic file resource upload facility for images and pdf files
-function tests for users/sessions controllers
-capistrano
-
--look into hosting with hostingrails
--domain name "discofi.org"
 
 schema:
 
--user/session from rails plugin
--ministry: code, history, link, 
--project: cost, code, amount raised, needs, finished?
--trip: dates, itinerary, participants (needs, concerns)
--donation: user, amount, project
 invitation (what was this for? inviting people to be a part of DF)
 
 flickr: soderic@ymail.com <simple password>

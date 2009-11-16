@@ -18,8 +18,9 @@
 
 <% if admin? -%>
 <div class="admin">
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Delete', @project, :confirm => 'Are you sure?', :method => :delete %>
+<%= link_to 'Edit', edit_project_path(@project), :class => 'admin' %> |
+<%= link_to 'Delete', @project, :confirm => 'Are you sure?',
+  :method => :delete, :class => 'admin' %>
 </div>
 <% end -%>
 

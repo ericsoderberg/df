@@ -14,26 +14,28 @@
 <div id="main">
 	
 <div id="header">
+  <div id="user_bar" onmouseover="hide_drop_menus()">
+    <%= render :partial => 'users/user_bar' %>
+  </div>
 	<ul class="banner">
 	  <li class="title" onmouseover="hide_drop_menus()">
-	    <a href="/">Discovery Foundation</a></li>
+	    <%= link_to 'Discovery Foundation', root_url %></li>
 	  <li class="<%= @tab == 'about' ? 'selected' : '' %>"
 	    onmouseover="hide_drop_menus()">
-	    <a href="/about">About</a></li>
+	    <%= link_to 'About', about_url %></li>
 	  <li class="<%= @tab == 'ministries' ? 'selected' : '' %>"
   	  onmouseover="hide_drop_menus(); Element.show('ministries_menu')">
-  	  <%= link_to "Relationships", ministries_path %>
+  	  <%= link_to "Relationships", ministries_url %>
   	  <ul id="ministries_menu" class="drop_menu" style="display:none"
   	    onmouseout="Element.hide('ministries_menu')">
   	    <% for ministry in @ministries -%>
-  	      <li><%= link_to ministry.name, ministry %></li>
+  	      <li><%= link_to ministry.name, ministry_url(ministry) %></li>
   	    <% end -%>
   	  </ul>
   	</li>
 	  <li class="<%= @tab == 'news' ? 'selected' : '' %>"
-	    onmouseover="hide_drop_menus()"><a href="news">News</a></li>
-	  <li id="user_bar" onmouseover="hide_drop_menus()">
-	    <%= render :partial => 'users/user_bar' %></li>
+	    onmouseover="hide_drop_menus()">
+	    <%= link_to 'News', news_url %></li>
 	</ul>
 	<!--p class="subheader">Going where many wont</p-->
 </div>
@@ -46,6 +48,14 @@
 </div>
 
 <div id="footer">
+  <% if admin? %>
+    <%= link_to 'donations', donations_url, :class => 'admin' -%> |
+    <%= link_to 'pages', pages_url, :class => 'admin' -%> |
+  <% end -%>
+  <% if self.current_user -%>
+  <%= link_to "participants", users_url, :class => 'admin' %> |
+  <%= link_to "files", data_files_url, :class => 'admin' %>
+  <% end -%>
 </div>
 
 </div>

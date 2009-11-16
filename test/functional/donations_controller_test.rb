@@ -64,7 +64,7 @@ class DonationsControllerTest < ActionController::TestCase
   test "should update donation" do
     login_as(users(:generic))
     put :update, :id => donations(:one).id, :donation => { }
-    assert_redirected_to donation_path(assigns(:donation))
+    assert_redirected_to project_path(assigns(:donation).project)
   end
   
   test "shouldn't update donation" do

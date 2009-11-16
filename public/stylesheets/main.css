@@ -10,6 +10,8 @@ body, p, ol, ul, td {
 
 h1, h2, h3, h5, h5, h6 { font-weight: bold; } 
   
+div { margin: 0; padding: 0; }
+
 pre {
   background-color: #eee;
   padding: 10px;
@@ -58,6 +60,9 @@ h2 { color: #444; margin-bottom: 20px; }
     #header li.title {
       font-size: 22px; }
     #header #user_bar {
+      float: right;
+      margin-top: 24px;
+      margin-right: 20px;
       font-size: 12px;
       text-align: right; }
     #header a {
@@ -77,7 +82,7 @@ h2 { color: #444; margin-bottom: 20px; }
   text-align: left; }
 
 #footer {
-  height: 64px; }
+  text-align: right; }
 
 div.sidebar {
   float: right;
@@ -159,10 +164,20 @@ div.admin {
   margin-bottom: 30px; }
   
 table {
-  margin: 20px 0; }
-  table td {
+  margin: 20px 0;
+  padding: 0; }
+  table tr { margin: 0; padding: 0; }
+  table td, table th {
+    padding-left: 0;
     padding-right: 15px; }
     
+#home_center { position: relative; }
+  #home_photos {
+    position: absolute;
+    z-index: 1;
+    top: 200px; left: 10px;
+    width: 200px; }
+
 .embedded_form {
   border: 2px solid #ccc;
   padding: 5px 20px;

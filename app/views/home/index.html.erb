@@ -31,15 +31,13 @@
 </ul>
 <% end -%>
 
-<%= render :partial => 'locations/map', :locals => {:locations => @locations} %>
-
-<div class="admin">
-<% if admin? %>
-  <%= link_to 'donations', donations_path, :class => 'admin' -%> |
-  <%= link_to 'pages', pages_path, :class => 'admin' -%> |
-<% end -%>
-<% if self.current_user -%>
-<%= link_to "participants", users_path, :class => 'admin' %> |
-<%= link_to "files", data_files_path, :class => 'admin' %>
-<% end -%>
+<div id="home_center">
+  <div id="home_photos">
+    <img width="200"/>
+  </div>
+  <div id="home_map">
+    <%= render :partial => 'locations/map',
+      :locals => {:locations => @locations} %>
+  </div>
 </div>
+

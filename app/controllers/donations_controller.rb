@@ -70,7 +70,7 @@ class DonationsController < ApplicationController
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
         flash[:notice] = 'Donation was successfully updated.'
-        format.html { redirect_to(@donation) }
+        format.html { redirect_to(@donation.project) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
