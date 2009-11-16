@@ -28,7 +28,7 @@ after 'deploy:symlink', 'deploy:finishing_touches'
 namespace :deploy do
    task :finishing_touches, :roles => :app do
     run "cp -pf #{deploy_to}/shared/system/environment.rb #{current_path}/config/environment.rb"
-    run "cp -pf #{deploy_to}/shared/system/environments/* #{current_path}/config/environments/"
+    run "cp -pfr #{deploy_to}/shared/system/environments #{current_path}/config/"
     run "cp -pf #{deploy_to}/shared/system/database.yml #{current_path}/config/database.yml"
   end
 end
