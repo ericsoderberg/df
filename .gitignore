@@ -1,5 +1,8 @@
 log/*.log
 tmp/**/*
+config/environments/*
+config/environment.rb
+config/database.yml
 db/*.sqlite3
 public/files/*
 doc/api

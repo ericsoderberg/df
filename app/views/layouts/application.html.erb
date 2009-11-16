@@ -48,6 +48,7 @@
 </div>
 
 <div id="footer">
+  <%= mail_to 'contact@discofi.org', nil, :encode => 'javascript' %>
   <% if admin? %>
     <%= link_to 'donations', donations_url, :class => 'admin' -%> |
     <%= link_to 'pages', pages_url, :class => 'admin' -%> |

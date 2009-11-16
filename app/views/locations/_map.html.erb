@@ -1,8 +1,8 @@
 <% scale ||= 1.0 -%>
+<% use_locations = locations.select{|l| ! l.ministries.empty?} -%>
 <div id="map_container">
-	<% for location in locations do -%>
-		<% next if location.ministries.empty?
-		  ministry = location.ministries.first
+	<% for location in use_locations do -%>
+		<% ministry = location.ministries.first
 		  id = "loc_" + location.id.to_s
 		  y = (location.y.to_f * scale).to_i - 8
 		  x = (location.x.to_f * scale).to_i - 8 -%>
@@ -19,9 +19,24 @@
 	<% end -%>
 	<%= image_tag('world_map.jpg', :id => 'map',
 		:width => "#{(800.0 * scale).to_i}") %>
-	<% if 1.0 == scale -%>
+	<% if 1.0 == scale and false -%>
 	<div id="map_help">
 	  Hover or click on the stars
 	</div>
 	<% end -%>
 </div>
+
+<% javascript_tag :defer => 'defer' do -%>
+  function randomTip() {
+    var ids=<%= array_or_string_for_javascript(use_locations.map{|l|
+      'loc_' + l.id.to_s}) -%>;
+    var i=Math.floor(Math.random()*<%= use_locations.length + 1%>);
+    if (Math.random() > 0.6) {
+      Effect.Appear(ids[i]);
+    } else {
+      Effect.Fade(ids[i]);
+    }
+  }
+  setInterval('randomTip()', 2000);
+<% end -%>
+

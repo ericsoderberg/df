@@ -1,9 +1,10 @@
 short term:
 
 Capistrano
-random home map star tooltips [javascript timer?]
-contact information [hosting email?]
-random photo overlays on home page in pacific ocean
+-random home map star tooltips [javascript timer?]
+-contact information
+-random photo overlays on home page in pacific ocean
+
 round edges of map
 test with IE
 invite/add/approve people [test with internet]
