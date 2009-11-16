@@ -30,5 +30,6 @@ namespace :deploy do
     run "cp -pf #{deploy_to}/shared/system/environment.rb #{current_path}/config/environment.rb"
     run "cp -pfr #{deploy_to}/shared/system/environments #{current_path}/config/"
     run "cp -pf #{deploy_to}/shared/system/database.yml #{current_path}/config/database.yml"
+    run "cp -pf #{deploy_to}/shared/system/initializers/site_keys.rb #{current_path}/config/initializers/"
   end
 end
