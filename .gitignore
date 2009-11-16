@@ -3,6 +3,7 @@ tmp/**/*
 config/environments/*
 config/environment.rb
 config/database.yml
+config/initializers/site_keys.rb
 db/*.sqlite3
 public/files/*
 doc/api
