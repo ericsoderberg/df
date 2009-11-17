@@ -13,8 +13,9 @@
 			ministry_url(ministry) %>
 		<div id="<%= id %>" class="tip"
 		  style="position: absolute;
+		    <%= 1.0 == scale ? '' : 'display: none;' %>
 		    top: <%= y - 20 %>px; left: <%= x + 15 %>px;">
-		  <%=h ministry.name %>
+		  <%= link_to ministry.name, ministry %>
 		</div>
 	<% end -%>
 	<%= image_tag('world_map.jpg', :id => 'map',
@@ -41,4 +42,3 @@
   setInterval('randomTip()', 2000);
 <% end -%>
 <% end -%>
-

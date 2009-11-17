@@ -142,6 +142,11 @@ ul.drop_menu {
   #map_container #map_help {
     text-align: right;
     color: #999; }*/
+  a {
+    color: inherit;
+    font-weight: normal;
+    border: none;
+  }
 
 div.account {
   margin: 0 auto;
