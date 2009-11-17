@@ -52,10 +52,8 @@
   <% if admin? %>
     <%= link_to 'donations', donations_url, :class => 'admin' -%> |
     <%= link_to 'pages', pages_url, :class => 'admin' -%> |
-  <% end -%>
-  <% if self.current_user -%>
-  <%= link_to "participants", users_url, :class => 'admin' %> |
-  <%= link_to "files", data_files_url, :class => 'admin' %>
+    <%= link_to "participants", users_url, :class => 'admin' %> |
+    <%= link_to "files", data_files_url, :class => 'admin' %>
   <% end -%>
 </div>
 

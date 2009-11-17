@@ -2,15 +2,20 @@
 
 <p><%= h @user.email %></p>
 
-<% if admin? -%>
+<% if admin? or @user == self.current_user -%>
 <div class="admin">
-<%= link_to 'Edit', edit_user_path(@user), :class => 'admin' %> |
-<%= link_to 'Delete', @user, :confirm => 'Are you sure?',
-  :method => :delete, :class => 'admin' %>
+  <%= link_to 'Edit', edit_user_path(@user), :class => 'admin' %>
+  <% if admin? -%>
+    |
+    <%= link_to 'Delete', @user, :confirm => 'Are you sure?',
+      :method => :delete, :class => 'admin' %>
+  <% end -%>
 </div>
 <% end -%>
 
+<% unless @user.donations.empty? -%>
 <h2>Donations</h2>
 
 <%= render :partial => 'donations/table',
   :locals => {:donations => @user.donations} %>
+<% end -%>
