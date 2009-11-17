@@ -1,9 +1,9 @@
 short term:
 
-Capistrano
--random home map star tooltips [javascript timer?]
--contact information
--random photo overlays on home page in pacific ocean
+validate HTML and CSS
+sign up
+About page
+ministries for FE and RA
 
 round edges of map
 test with IE

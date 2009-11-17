@@ -33,3 +33,12 @@ namespace :deploy do
     run "cp -pf #{deploy_to}/shared/system/initializers/site_keys.rb #{current_path}/config/initializers/"
   end
 end
+
+namespace :passenger do
+  desc "Restart Application"
+  task :restart do
+    run "touch #{current_path}/tmp/restart.txt"
+  end
+end
+
+after :deploy, "passenger:restart"

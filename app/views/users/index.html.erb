@@ -20,10 +20,18 @@
     <td><%= mail_to user.email %></td>
     <% if admin? -%>
     <td>
-      <% remote_form_for(:user, user, :url => toggle_user_path(user), :update => 'result', :html => {:method => :put}) do |f| -%>
+      <% remote_form_for(:user, user, :url => toggle_user_path(user),
+        :update => 'result', :html => {:method => :put}) do |f| -%>
       <%= f.check_box :administrator, :onchange => "this.form.submit();" %>
       <% end -%>
     </td>
+    <% if user != self.current_user -%>
+    <td>
+      <%= link_to 'Delete', purge_user_path(user),
+        :confirm => 'Are you sure?',
+        :method => :delete, :class => 'admin' %>
+    </td>
+    <% end -%>
     <% end -%>
   </tr>
 <% end %>
