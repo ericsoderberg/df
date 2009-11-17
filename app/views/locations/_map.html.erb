@@ -12,7 +12,7 @@
 			:onmouseout => "Effect.Fade('#{id}')"),
 			ministry_url(ministry) %>
 		<div id="<%= id %>" class="tip"
-		  style="position: absolute; display: none;
+		  style="position: absolute;
 		    top: <%= y - 20 %>px; left: <%= x + 15 %>px;">
 		  <%=h ministry.name %>
 		</div>
@@ -26,6 +26,7 @@
 	<% end -%>
 </div>
 
+<% if false -%>
 <% javascript_tag :defer => 'defer' do -%>
   function randomTip() {
     var ids=<%= array_or_string_for_javascript(use_locations.map{|l|
@@ -38,5 +39,6 @@
     }
   }
   setInterval('randomTip()', 2000);
+<% end -%>
 <% end -%>
 

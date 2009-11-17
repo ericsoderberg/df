@@ -1,8 +1,6 @@
 short term:
 
 validate HTML and CSS
-sign up
-About page
 ministries for FE and RA
 
 round edges of map
