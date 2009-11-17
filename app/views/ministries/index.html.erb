@@ -1,4 +1,4 @@
-<h1>Ministries</h1>
+<h1>Relationships</h1>
 
 <ul class="listing">
 <% for ministry in @ministries %>
@@ -11,6 +11,6 @@
 
 <% if admin? -%>
 <div class="admin">
-<%= link_to 'New ministry', new_ministry_path, :class => 'admin' %>
+<%= link_to 'New relationship', new_ministry_path, :class => 'admin' %>
 </div>
 <% end -%>
