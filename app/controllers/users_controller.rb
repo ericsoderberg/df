@@ -6,6 +6,8 @@ class UsersController < ApplicationController
   before_filter :administrator_required,
     :only => [:index, :toggle,
       :suspend, :unsuspend, :destroy, :purge]
+      
+  skip_before_filter :store_location, :only => [:activate, :create, :new]
   
   def index
     @users = User.find(:all, :order => 'name')
