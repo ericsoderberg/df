@@ -7,9 +7,10 @@
 		  y = (location.y.to_f * scale).to_i - 8
 		  x = (location.x.to_f * scale).to_i - 8 -%>
 		<%= link_to image_tag('star.gif',
-			:style => "position: absolute; top: #{y}px; left: #{x}px;",
-			:onmouseover => "Effect.Appear('#{id}')",
-			:onmouseout => "Effect.Fade('#{id}')"),
+			:style => "position: absolute; top: #{y}px; left: #{x}px;"
+			#:onmouseover => "Effect.Appear('#{id}')",
+			#:onmouseout => "Effect.Fade('#{id}')"
+			),
 			ministry_url(ministry) %>
 		<div id="<%= id %>" class="tip"
 		  style="position: absolute;
