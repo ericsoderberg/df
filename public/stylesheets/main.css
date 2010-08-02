@@ -59,6 +59,10 @@ h2 { color: #444; margin-bottom: 20px; }
       display: inline; position: relative; }
     #header li.title {
       font-size: 22px; }
+    #header #logo {
+      float: left;
+      margin-top: 8px;
+      margin-left: 20px; }
     #header #user_bar {
       float: right;
       margin-top: 24px;
