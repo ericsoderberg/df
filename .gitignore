@@ -8,3 +8,4 @@ db/*.sqlite3
 public/files
 doc/api
 doc/app
+.DS_Store
